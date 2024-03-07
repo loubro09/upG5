@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 public class Message {
-
     private String text;
     private Icon ImageIcon;
     private User sender;
