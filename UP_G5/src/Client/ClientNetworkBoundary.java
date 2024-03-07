@@ -1,5 +1,7 @@
 package Client;
 
+import Entity.Message;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
@@ -26,8 +28,13 @@ public class ClientNetworkBoundary {
 
     }
 
-    synchronized public void sendMessage(){
-
+    synchronized public void sendMessage(Message message){
+        try {
+            oos.writeObject(message);
+            oos.flush();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     synchronized public void receiveMessage(){

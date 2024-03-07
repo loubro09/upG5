@@ -6,8 +6,14 @@ import Client.view.MainFrame;
 
 public class ClientViewController {
     private MainFrame mainFrame;
+    private ClientMessageController cmc;
+    private LogController lc;
+    private ContactController cc;
 
-    public ClientViewController() {
+    public ClientViewController(ClientMessageController cmc, LogController lc, ContactController cc) {
+        this.cmc = cmc;
+        this.lc = lc;
+        this.cc = cc;
         mainFrame = new MainFrame(1000, 500, this);
         mainFrame.enableAllButtons();
         mainFrame.disableLogOutButton();
@@ -39,8 +45,14 @@ public class ClientViewController {
         }
     }
 
-    public static void main (String[] args) {
-        ClientViewController controller = new ClientViewController();
+    public LogController getLc() {
+        return lc;
+    }
 
+    public static void main (String[] args) {
+        ClientMessageController cmc = new ClientMessageController();
+        LogController lc = new LogController();
+        ContactController cc = new ContactController();
+        ClientViewController controller = new ClientViewController(cmc, lc, cc);
     }
 }
