@@ -43,4 +43,12 @@ public class Message implements Serializable {
     public LocalDateTime getTimeDelivered(){
         return timeDelivered;
     }
+
+    public MessageType getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(MessageType messageType) {
+        this.messageType = messageType;
+    }
 }

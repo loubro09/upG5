@@ -1,7 +1,9 @@
 package Server;
 
-import Client.ClientNetworkBoundary;
+
+import Entity.Buffer;
 import Entity.Message;
+import Entity.MessageType;
 import Entity.User;
 
 import java.beans.PropertyChangeSupport;
@@ -14,6 +16,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
+
+
 public class ServerNetworkBoundary {
 
 
@@ -21,66 +25,109 @@ public class ServerNetworkBoundary {
 
     private PropertyChangeSupport propertyChangeSupport;
     private ArrayList<ClientHandler> connectedClients = new ArrayList<>();
-    private Message message;
-    private ClientNetworkBoundary clientNetworkBoundary;
     private HashMap<User, ClientHandler> clients = new HashMap<>();
 
-    public void put(User user, ClientHandler clientHandler){
-        clients.put(user, clientHandler);
-    }
 
-   
+    private Buffer<Message> messageBuffer = new Buffer<>();
+    private Buffer<Message> loginBuffer = new Buffer<>();
+    private Buffer<Message> logoutBuffer = new Buffer<>();
+    private Buffer<Message> registerUserBuffer = new Buffer<>();
 
     public ServerNetworkBoundary(int port) {
         try {
-            this.serverSocket=new ServerSocket(port);
+            this.serverSocket = new ServerSocket(port);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        ClientHandler clientHandler = new ClientHandler();
-        Thread thread = new Thread(clientHandler);
-        thread.start();
+        startListening();
 
     }
 
-    private class Connection extends Thread{
+    private void startListening() {
+        Connection connection = new Connection();
+        connection.start();
+    }
 
+    private void handleClientConnection(Socket socket) {
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+
+
+            User user = (User) ois.readObject();
+
+
+            if (!clients.containsKey(user)) {
+                ClientHandler clientHandler = new ClientHandler(socket, ois, oos, user);
+
+                clients.put(user, clientHandler);
+
+                clientHandler.start();
+            } else {
+                oos.writeObject("User already logged in");
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private class Connection extends Thread {
 
         @Override
         public void run() {
-            Socket socket = null;
-            try{
-            while(true) {
-                try {
-                    socket= serverSocket.accept();
-
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
+            try {
+                while (true) {
+                    Socket socket = serverSocket.accept();
+                    handleClientConnection(socket);
                 }
-            }
-
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
+
             }
         }
     }
 
-    private class ClientHandler extends Thread{
+
+    private class ClientHandler extends Thread {
         private ObjectOutputStream oos;
         private ObjectInputStream ois;
         private Socket socket;
+        private User user;
 
-        public ClientHandler() {
-            try {
-                oos = new ObjectOutputStream(socket.getOutputStream());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            start();
+        public ClientHandler(Socket socket, ObjectInputStream ois, ObjectOutputStream oos, User user) {
+            this.socket = socket;
+            this.ois = ois;
+            this.oos = oos;
+            this.user = user;
         }
 
         @Override
         public void run() {
+            try {
+                while (true) {
+                    Message message = (Message) ois.readObject();
+                    MessageType messageType = message.getMessageType();
+                    switch (messageType) {
+                        case message:
+                            messageBuffer.put(message);
+                            break;
+                        case logIn:
+                            loginBuffer.put(message);
+                            break;
+                        case logOut:
+                            logoutBuffer.put(message);
+                            break;
+                        case registerUser:
+                            registerUserBuffer.put(message);
+                            break;
+                    }
+
+                }
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
 
         }
     }

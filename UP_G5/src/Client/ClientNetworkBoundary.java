@@ -1,5 +1,7 @@
 package Client;
 
+import Server.ServerNetworkBoundary;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
@@ -23,6 +25,8 @@ public class ClientNetworkBoundary {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        //Osäker var denna ska vara
+        ServerNetworkBoundary serverNetworkBoundary = new ServerNetworkBoundary(socket.getPort());
 
     }
 
