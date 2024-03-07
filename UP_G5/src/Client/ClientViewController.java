@@ -9,6 +9,9 @@ public class ClientViewController {
     public ClientViewController() {
         mainFrame = new MainFrame(1000, 500, this);
         mainFrame.enableAllButtons();
+        mainFrame.disableLogOutButton();
+        mainFrame.disableFriendsButton();
+        mainFrame.disableSendMessageButton();
         //ta emot instanser av controllers?
     }
 
@@ -16,6 +19,7 @@ public class ClientViewController {
         switch (button) {
             case Log_In:
                 //skapa instans av LogController
+                new LogController();
                 break;
             case Log_Out:
                 break;

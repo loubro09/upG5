@@ -38,6 +38,18 @@ public class MainFrame extends JFrame {
         return mainPanel.getLeftPanel().getLeftPanelList().getSelectedIndex();
     }
 
+    public void disableLogOutButton() {
+        mainPanel.getLeftPanel().getBtnLogOut().setEnabled(false);
+    }
+
+    public void disableSendMessageButton() {
+        mainPanel.getLeftPanel().getBtnSend().setEnabled(false);
+    }
+
+    public void disableFriendsButton() {
+        mainPanel.getRightPanel().getBtnFriends().setEnabled(false);
+    }
+
 
     /*public void setTextCostLabelRightPanel(String newText){
         mainPanel.getRightPanel().setTextCostLabel(newText);
@@ -46,28 +58,6 @@ public class MainFrame extends JFrame {
 
     public void setTextTitleLabelRightPanel(String newText){
         mainPanel.getRightPanel().setTextTitleLabel(newText);
-    }
-
-    public void disableFoodMenuButton(){
-        mainPanel.getLeftPanel().getBtnShowFood().setEnabled(false);
-    }
-
-
-    public void disableDrinksMenuButton(){
-        mainPanel.getLeftPanel().getBtnShowDrinks().setEnabled(false);
-    }
-
-
-    public void disableAddMenuButton(){
-        mainPanel.getLeftPanel().getBtnAddSelectionToOrder().setEnabled(false);
-    }
-
-    public void disableOrderButton(){
-        mainPanel.getRightPanel().getBtnCreateOrder().setEnabled(false);
-    }
-
-    public void disableViewSelectedOrderButton(){
-        mainPanel.getRightPanel().getBtnViewSelectedOrder().setEnabled(false);
     }*/
 
     public void enableAllButtons(){

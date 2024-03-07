@@ -19,7 +19,6 @@ public class RegisterUserController implements PropertyChangeListener {
     public void addUser(String userName, Icon icon){
         User user = new User(userName,icon);
         allUsers.add(user);
-
     }
 
 
