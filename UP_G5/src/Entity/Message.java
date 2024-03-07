@@ -5,8 +5,12 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
+<<<<<<< HEAD
+public class Message {
+=======
 public class Message implements Serializable {
     private MessageType messageType;
+>>>>>>> 7950a75b52e9dabd9588f823db9d5328fbec831a
     private String text;
     private Icon ImageIcon;
     private User sender;
