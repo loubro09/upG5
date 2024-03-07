@@ -120,8 +120,17 @@ public class ServerNetworkBoundary {
                 }
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
-            }
+                clients.remove(user);
 
+            } finally {
+                try {
+                    ois.close();
+                    oos.close();
+                    socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
         }
     }

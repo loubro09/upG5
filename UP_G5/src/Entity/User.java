@@ -17,12 +17,20 @@ public class User {
         return userName;
     }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public List<User> getContactList() {
         return contactList;
     }
 
     public Icon getImageIcon(){
         return userPicture;
+    }
+
+    public void setUserPicture(Icon userPicture) {
+        this.userPicture = userPicture;
     }
 
     public void setContactList(List<User> contactList) {
