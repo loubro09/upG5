@@ -26,20 +26,22 @@ public class LogController implements PropertyChangeListener{
     public void logIn(String userName){
         boolean accountExist = false;
         for (User us : allUsers) {
-            if(us.equals(userName)) {
+            if(us.getUserName().equals(userName)) {
                 //ändra till inloggad
+                //skapa klient
                 //skicka inloggning till server
                 accountExist = true;
             }
         }
-
         if (accountExist == false) {
             createAccount(userName);
         }
     }
 
     public void createAccount(String userName) {
+        //Icon userImage = JFileChooser
         //skapa nytt konto
+        //addUser(userName, userImage);
         //skicka nytt konto till server
     }
 

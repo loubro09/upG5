@@ -1,6 +1,7 @@
 package Client;
 
 import Client.view.ButtonType;
+import Client.view.LogInFrame;
 import Client.view.MainFrame;
 
 public class ClientViewController {
@@ -19,7 +20,7 @@ public class ClientViewController {
         switch (button) {
             case Log_In:
                 //skapa instans av LogController
-                new LogController();
+                new LogInFrame(this);
                 break;
             case Log_Out:
                 break;
