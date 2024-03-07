@@ -1,6 +1,5 @@
 package Client;
 
-// TJABBA KOLLA MIN FINA KOMMENTAR
-// DETTA är en ny rader som jag ska commita
+// Banan Melon Kiwi Citron
 public class ClientMessageController {
 }
