@@ -40,6 +40,6 @@ public class ClientViewController {
 
     public static void main (String[] args) {
         ClientViewController controller = new ClientViewController();
-        
+
     }
 }
