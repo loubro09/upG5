@@ -12,26 +12,20 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.HashMap;
-
-
 
 
 public class ServerNetworkBoundary {
 
 
     private ServerSocket serverSocket;
-
     private PropertyChangeSupport propertyChangeSupport;
-    private ArrayList<ClientHandler> connectedClients = new ArrayList<>();
     private HashMap<User, ClientHandler> clients = new HashMap<>();
-
-
     private Buffer<Message> messageBuffer = new Buffer<>();
     private Buffer<Message> loginBuffer = new Buffer<>();
     private Buffer<Message> logoutBuffer = new Buffer<>();
     private Buffer<Message> registerUserBuffer = new Buffer<>();
+
 
     public ServerNetworkBoundary(int port) {
         try {
