@@ -50,6 +50,11 @@ public class MainFrame extends JFrame {
         mainPanel.getRightPanel().getBtnFriends().setEnabled(false);
     }
 
+    public void disableAndHideAddFriendButton() {
+        mainPanel.getRightPanel().getBtnSelectContact().setEnabled(false);
+        mainPanel.getRightPanel().getBtnSelectContact().setVisible(false);
+    }
+
 
     /*public void setTextCostLabelRightPanel(String newText){
         mainPanel.getRightPanel().setTextCostLabel(newText);

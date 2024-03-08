@@ -19,6 +19,7 @@ public class ClientViewController {
         mainFrame.disableLogOutButton();
         mainFrame.disableFriendsButton();
         mainFrame.disableSendMessageButton();
+        mainFrame.disableAndHideAddFriendButton();
         //ta emot instanser av controllers?
     }
 
