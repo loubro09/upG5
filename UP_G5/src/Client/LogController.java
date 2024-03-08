@@ -42,15 +42,18 @@ public class LogController implements PropertyChangeListener{
             }
         }
         if (accountExist == false) {
-            createAccount(userName);
+            //createAccount(userName, userIcon);
+            addUser(userName, userIcon);
         }
     }
 
-    public void createAccount(String userName) {
+    public void createAccount(String userName, Icon userIcon) {
         //Icon userImage = JFileChooser
         //skapa nytt konto
         //addUser(userName, userImage);
         //skicka nytt konto till server
+        //User user = new User(userName, userIcon);
+        //addUser(userName, userIcon);
     }
 
     public void logOut(){
