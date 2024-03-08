@@ -13,7 +13,7 @@ import java.io.IOException;
 public class RegisterUserFrame extends JFrame implements ActionListener {
 
     private JPanel mainPanel;
-    private JTextArea enterUserName;
+    private JTextField enterUserName;
     private JButton enterPhoto;
     private File file;
     private JLabel picture;
@@ -22,46 +22,55 @@ public class RegisterUserFrame extends JFrame implements ActionListener {
 
     public RegisterUserFrame(ClientViewController controller) {
         this.controller = controller;
+
+    public RegisterUserFrame() {
+
         setTitle("Register New User");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(true);
         setupPanel();
         pack();
-        setMinimumSize(new Dimension(400,500));
+        setMinimumSize(new Dimension(300,300));
         setVisible(true);
-
     }
-
 
     public void setupPanel() {
         mainPanel = new JPanel();
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        mainPanel.setLayout(new BorderLayout());
+
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
 
         JLabel lblUserName = new JLabel("Enter username: ");
-        lblUserName.setAlignmentX(Component.LEFT_ALIGNMENT);
-        mainPanel.add(lblUserName);
+        inputPanel.add(lblUserName);
 
-        enterUserName = new JTextArea();
+        enterUserName = new JTextField();
         enterUserName.setAlignmentX(Component.LEFT_ALIGNMENT);
-        mainPanel.add(enterUserName);
+        enterUserName.setPreferredSize(new Dimension(100,25));
+        inputPanel.add(enterUserName);
+        mainPanel.add(inputPanel, BorderLayout.NORTH);
 
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
         enterPhoto = new JButton("Choose Photo");
         enterPhoto.setAlignmentX(Component.LEFT_ALIGNMENT);
         enterPhoto.addActionListener(this);
-        mainPanel.add(enterPhoto);
+        buttonPanel.add(enterPhoto);
 
         picture = new JLabel();
         picture.setAlignmentX(Component.LEFT_ALIGNMENT);
-        mainPanel.add(picture);
-
+        buttonPanel.add(picture);
 
 
         JButton registerbtn= new JButton("Register");
         registerbtn.setAlignmentX(Component.LEFT_ALIGNMENT);
         registerbtn.addActionListener(this);
-        mainPanel.add(registerbtn);
+        buttonPanel.add(registerbtn);
+
+        mainPanel.add(buttonPanel, BorderLayout.CENTER);
         getContentPane().add(mainPanel);
+
     }
 
     @Override
@@ -75,7 +84,7 @@ public class RegisterUserFrame extends JFrame implements ActionListener {
                 Image img = null;
                 try {
                     img = ImageIO.read(file);
-                    Image scaledImg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH); // Adjust size if needed
+                    Image scaledImg = img.getScaledInstance(100, 100, Image.SCALE_SMOOTH); // Adjust size if needed
                     picture.setIcon(new ImageIcon(scaledImg));
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
