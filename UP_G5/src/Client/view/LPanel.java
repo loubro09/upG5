@@ -1,9 +1,5 @@
 package Client.view;
-
-import Entity.Message;
-
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class LPanel extends JPanel {
     private JList<Object> leftPanelList;
@@ -47,29 +43,31 @@ public class LPanel extends JPanel {
         btnRegUser = new JButton("Register user");
         btnRegUser.setEnabled(true);
         btnRegUser.setSize(width / 5, 30);
-        btnRegUser.setLocation(width / 5, height - 75);
-        btnRegUser.addActionListener(l -> mainFrame.buttonPressed(ButtonType.Register_new_user));
+        btnRegUser.setLocation((width / 5), height - 75);
+        btnRegUser.addActionListener(e -> {
+            RegisterUserFrame registerUserFrame = new RegisterUserFrame();
+        });
         this.add(btnRegUser);
 
         btnSend = new JButton("Send Message");
         btnSend.setEnabled(true);
         btnSend.setSize(width / 5, 30);
-        btnSend.setLocation((width / 5) * 2, height - 75);
-        btnSend.addActionListener(l -> mainFrame.buttonPressed(ButtonType.send));
+        btnSend.setLocation((width / 5)*2, height - 75);
+        btnSend.addActionListener(l ->mainFrame.buttonPressed(ButtonType.send));
         this.add(btnSend);
 
         btnLogOut = new JButton("Log Out");
         btnLogOut.setEnabled(true);
         btnLogOut.setSize(width / 5, 30);
         btnLogOut.addActionListener(l -> mainFrame.buttonPressed(ButtonType.Log_Out));
-        btnLogOut.setLocation((width / 5) * 3, height - 75);
+        btnLogOut.setLocation((width / 5)*3, height - 75);
         this.add(btnLogOut);
 
         btnExit = new JButton("Exit Program");
         btnExit.setEnabled(true);
         btnExit.setSize(width / 5, 30);
         btnExit.addActionListener(l -> mainFrame.buttonPressed(ButtonType.exit));
-        btnExit.setLocation((width / 5) * 5, height - 75);
+        btnExit.setLocation((width / 5)*4, height - 75);
         this.add(btnExit);
 
 
@@ -84,9 +82,8 @@ public class LPanel extends JPanel {
     }
 
 
-    protected JButton getBtnLogOut() {
-        return btnLogOut;
-    }
+    protected JButton getBtnLogOut() { return btnLogOut; }
+
 
 
     protected JButton getBtnlogIn() {
@@ -103,14 +100,9 @@ public class LPanel extends JPanel {
     }
 
 
-    public void populateList(ArrayList<Message> messages) {
-        DefaultListModel<Object> listModel = new DefaultListModel<>();
-        for (Message message : messages) {
-            String senderName = message.getSender() != null ? message.getSender().getUserName() : "Unknown";
-            listModel.addElement(senderName + ": " + message.getText());
-        }
-        leftPanelList.setModel(listModel);
 
+    public void populateList(String[] informationArray){
+        leftPanelList.setListData(informationArray);
     }
 
 }
