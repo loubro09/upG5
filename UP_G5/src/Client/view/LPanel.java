@@ -8,11 +8,8 @@ public class LPanel extends JPanel {
     private JButton btnLogOut;
     private JButton btnSend;
     private JButton btnExit;
-
-
     private int width;
     private int height;
-
     private MainFrame mainFrame;
 
     public LPanel(int width, int height, MainFrame mainFrame) {
@@ -26,8 +23,6 @@ public class LPanel extends JPanel {
     }
 
     private void setUp() {
-
-
         leftPanelList = new JList<>();
         leftPanelList.setLocation(0, 23);
         leftPanelList.setSize(width, height - 100);
@@ -63,12 +58,6 @@ public class LPanel extends JPanel {
         btnLogOut.setLocation((width / 5)*3, height - 75);
         this.add(btnLogOut);
 
-        btnExit = new JButton("Exit Program");
-        btnExit.setEnabled(true);
-        btnExit.setSize(width / 5, 30);
-        btnExit.addActionListener(l -> mainFrame.buttonPressed(ButtonType.exit));
-        btnExit.setLocation((width / 5)*4, height - 75);
-        this.add(btnExit);
 
 
     }
@@ -85,7 +74,6 @@ public class LPanel extends JPanel {
     protected JButton getBtnLogOut() { return btnLogOut; }
 
 
-
     protected JButton getBtnlogIn() {
         return btnlogIn;
     }
@@ -98,7 +86,6 @@ public class LPanel extends JPanel {
         return btnRegUser;
 
     }
-
 
     public void populateList(String[] informationArray){
         leftPanelList.setListData(informationArray);

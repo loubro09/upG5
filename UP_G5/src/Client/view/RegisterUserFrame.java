@@ -18,7 +18,6 @@ public class RegisterUserFrame extends JFrame implements ActionListener {
     private File file;
     private JLabel picture;
 
-
     public RegisterUserFrame() {
 
         setTitle("Register New User");
@@ -29,9 +28,7 @@ public class RegisterUserFrame extends JFrame implements ActionListener {
         pack();
         setMinimumSize(new Dimension(300,300));
         setVisible(true);
-
     }
-
 
     public void setupPanel() {
         mainPanel = new JPanel();
@@ -42,8 +39,6 @@ public class RegisterUserFrame extends JFrame implements ActionListener {
 
         JLabel lblUserName = new JLabel("Enter username: ");
         inputPanel.add(lblUserName);
-        //lblUserName.setAlignmentX(Component.LEFT_ALIGNMENT);
-       // mainPanel.add(lblUserName);
 
         enterUserName = new JTextField();
         enterUserName.setAlignmentX(Component.LEFT_ALIGNMENT);

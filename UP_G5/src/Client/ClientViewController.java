@@ -26,8 +26,6 @@ public class ClientViewController {
                 break;
             case Register_new_user:
                 break;
-            case exit:
-                break;
             case send:
                 break;
             case Choose_Contact:

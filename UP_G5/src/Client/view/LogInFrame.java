@@ -13,13 +13,11 @@ import java.io.IOException;
 
 public class LogInFrame  extends JFrame implements ActionListener{
         private JPanel mainPanel;
-        private JButton login;
+
         private JTextField enterUserName;
         private JButton enterPhoto;
         private File file;
         private JLabel picture;
-
-
 
         public LogInFrame() {
             setTitle("Log in");
@@ -29,8 +27,6 @@ public class LogInFrame  extends JFrame implements ActionListener{
             setupPanel();
             pack();
             setMinimumSize(new Dimension(300,300));
-            //mainPanel = new JPanel(new GridLayout(3, 1));
-            //setSize(600, 400);
             setVisible(true);
         }
 
@@ -40,11 +36,8 @@ public class LogInFrame  extends JFrame implements ActionListener{
             JPanel inputPanel2 = new JPanel();
             inputPanel2.setLayout(new BoxLayout(inputPanel2, BoxLayout.Y_AXIS));
 
-
-
             JLabel lblUserName = new JLabel("Enter username: ");
             inputPanel2.add(lblUserName);
-
 
             enterUserName = new JTextField();
             enterUserName.setVisible(true);
@@ -61,13 +54,9 @@ public class LogInFrame  extends JFrame implements ActionListener{
             enterPhoto.addActionListener(this);
             buttonPanel.add(enterPhoto);
 
-
-
             picture = new JLabel();
             picture.setAlignmentX(Component.LEFT_ALIGNMENT);
             buttonPanel.add(picture);
-
-
 
             JButton login= new JButton("Log in");
             login.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -95,8 +84,8 @@ public class LogInFrame  extends JFrame implements ActionListener{
                         throw new RuntimeException(ex);
                     }
                 }
-            }else if(e.getActionCommand().equals("Log in")){
+            }else if(e.getActionCommand().equals("Log in")) {
                 dispose();
             }
-    }
+        }
 }
