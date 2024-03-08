@@ -31,8 +31,6 @@ public class MainFrame extends JFrame {
         mainPanel.getLeftPanel().populateList(messages);
     }*/
 
-     */
-
     public void showMessage(String message) {
         JOptionPane.showMessageDialog(this, message);
     }
