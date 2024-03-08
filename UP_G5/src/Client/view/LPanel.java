@@ -78,9 +78,6 @@ public class LPanel extends JPanel {
         return btnlogIn;
     }
 
-    protected JButton getBtnExit() {
-        return btnExit;
-    }
 
     protected JButton getBtnRegUser() {
         return btnRegUser;

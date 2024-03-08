@@ -38,7 +38,6 @@ public class MainFrame extends JFrame {
     }
 
 
-
     public void populateRightPanel(String[] informationArray) {
         mainPanel.getRightPanel().populateList(informationArray);
     }
@@ -75,7 +74,6 @@ public class MainFrame extends JFrame {
     }*/
 
     public void enableAllButtons() {
-        mainPanel.getLeftPanel().getBtnExit().setEnabled(true);
         mainPanel.getLeftPanel().getBtnlogIn().setEnabled(true);
         mainPanel.getLeftPanel().getBtnLogOut().setEnabled(true);
         mainPanel.getLeftPanel().getBtnRegUser().setEnabled(true);

@@ -13,7 +13,6 @@ import java.io.IOException;
 
 public class LogInFrame  extends JFrame implements ActionListener{
         private JPanel mainPanel;
-
         private JTextField enterUserName;
         private JButton enterPhoto;
         private File file;
