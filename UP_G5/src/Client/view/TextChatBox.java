@@ -1,4 +1,14 @@
 package Client.view;
 
-public class TextChatBox {
+import javax.swing.*;
+import java.awt.*;
+
+public class TextChatBox extends JPanel {
+    private JTextArea chatArea;
+    private JScrollPane scrollPane;
+
+    public TextChatBox(int width, int height){
+        setLayout(new BorderLayout());
+
+    }
 }
