@@ -1,6 +1,8 @@
 package Client.view;
+
 import Client.ClientViewController;
 import Client.view.*;
+
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
@@ -20,21 +22,21 @@ public class MainFrame extends JFrame {
 
     }
 
-    public void populateLeftPanel(String[] informationArray){
+    public void populateLeftPanel(String[] informationArray) {
         mainPanel.getLeftPanel().populateList(informationArray);
     }
 
 
-    public void populateRightPanel(String[] informationArray){
+    public void populateRightPanel(String[] informationArray) {
         mainPanel.getRightPanel().populateList(informationArray);
     }
 
-    public void clearRightPanel(){
+    public void clearRightPanel() {
         mainPanel.getRightPanel().clearList();
     }
 
 
-    public int getSelectionLeftPanel(){
+    public int getSelectionLeftPanel() {
         return mainPanel.getLeftPanel().getLeftPanelList().getSelectedIndex();
     }
 
@@ -60,7 +62,7 @@ public class MainFrame extends JFrame {
         mainPanel.getRightPanel().setTextTitleLabel(newText);
     }*/
 
-    public void enableAllButtons(){
+    public void enableAllButtons() {
         mainPanel.getLeftPanel().getBtnExit().setEnabled(true);
         mainPanel.getLeftPanel().getBtnlogIn().setEnabled(true);
         mainPanel.getLeftPanel().getBtnLogOut().setEnabled(true);
@@ -69,7 +71,7 @@ public class MainFrame extends JFrame {
     }
 
 
-    public void buttonPressed(ButtonType pressedButton){
+    public void buttonPressed(ButtonType pressedButton) {
         controller.buttonPressed(pressedButton);
     }
 
