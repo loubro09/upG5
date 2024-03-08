@@ -6,6 +6,9 @@ public class ClientMessageController {
 
     public ClientMessageController(String ip, int port) {
         this.networkBoundary = new ClientNetworkBoundary(ip, port);
+
+
+
     }
 
 }
