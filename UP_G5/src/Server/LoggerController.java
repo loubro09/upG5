@@ -22,8 +22,6 @@ public class LoggerController {
         }
 
     }
-
-
     public String[] readFile() {
         String[] stringArray = new String[100];
         int i = 0;

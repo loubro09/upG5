@@ -6,13 +6,16 @@ import Entity.Message;
 import Entity.MessageType;
 import Entity.User;
 
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class ServerNetworkBoundary {
@@ -22,7 +25,6 @@ public class ServerNetworkBoundary {
     private PropertyChangeSupport propertyChangeSupport;
     private HashMap<User, ClientHandler> clients = new HashMap<>();
     private Buffer<Message> messageBuffer = new Buffer<>();
-    private Buffer<Message> loginBuffer = new Buffer<>();
     private Buffer<Message> logoutBuffer = new Buffer<>();
     private Buffer<Message> registerUserBuffer = new Buffer<>();
 
@@ -35,6 +37,12 @@ public class ServerNetworkBoundary {
         }
         startListening();
 
+    }
+
+
+
+    public void addPropertyChangeListener (PropertyChangeListener pcl) {
+        propertyChangeSupport.addPropertyChangeListener(pcl);
     }
 
     private void startListening() {
@@ -107,7 +115,7 @@ public class ServerNetworkBoundary {
                             messageBuffer.put(message);
                             break;
                         case logIn:
-                            loginBuffer.put(message);
+                            propertyChangeSupport.firePropertyChange("login",null,message);
                             break;
                         case logOut:
                             logoutBuffer.put(message);
@@ -134,6 +142,4 @@ public class ServerNetworkBoundary {
 
         }
     }
-
-
 }
