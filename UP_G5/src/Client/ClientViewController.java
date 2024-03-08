@@ -3,19 +3,20 @@ package Client;
 import Client.view.ButtonType;
 import Client.view.LogInFrame;
 import Client.view.MainFrame;
+import Client.view.RegisterUserFrame;
 
 public class ClientViewController {
     private MainFrame mainFrame;
+    private LogController lc;
 
-    public ClientViewController() {
+    public ClientViewController(LogController lc) {
+        this.lc = lc;
         mainFrame = new MainFrame(1000, 500, this);
         mainFrame.enableAllButtons();
         mainFrame.disableLogOutButton();
         mainFrame.disableFriendsButton();
         mainFrame.disableSendMessageButton();
         //ta emot instanser av controllers?
-
-        ClientMessageController msgController = new ClientMessageController("127.0.0.1", 2343, mainFrame);
     }
 
     public void buttonPressed(ButtonType button) {
@@ -27,6 +28,7 @@ public class ClientViewController {
             case Log_Out:
                 break;
             case Register_new_user:
+                new RegisterUserFrame(this);
                 break;
             case send:
                 break;
@@ -40,7 +42,14 @@ public class ClientViewController {
     }
 
     public static void main (String[] args) {
-        ClientViewController controller = new ClientViewController();
+        LogController lc = new LogController();
+        ClientViewController controller = new ClientViewController(lc);
 
+       // ClientMessageController msgController = new ClientMessageController();
+
+    }
+
+    public LogController getLc() {
+        return lc;
     }
 }

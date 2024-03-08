@@ -23,16 +23,13 @@ public class MainFrame extends JFrame {
         this.setContentPane(mainPanel);
         this.setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        messageController = new ClientMessageController("127.0.0.1", 2343, this);
+        messageController = new ClientMessageController("server_ip", 1234, this);
 
     }
 
-    public void populateLeftPanel(Message message) {
-
-        ArrayList<Message> listModel = new ArrayList<>();
-        listModel.add(message);
-        mainPanel.getLeftPanel().populateList(listModel);
-    }
+    /*public void populateLeftPanel(ArrayList<Message> messages) {
+        mainPanel.getLeftPanel().populateList(messages);
+    }*/
 
     public void showMessage(String message) {
         JOptionPane.showMessageDialog(this, message);
@@ -63,6 +60,11 @@ public class MainFrame extends JFrame {
 
     public void disableFriendsButton() {
         mainPanel.getRightPanel().getBtnFriends().setEnabled(false);
+    }
+
+    public void disableAndHideAddFriendButton() {
+        mainPanel.getRightPanel().getBtnSelectContact().setEnabled(false);
+        mainPanel.getRightPanel().getBtnSelectContact().setVisible(false);
     }
 
 
