@@ -9,6 +9,9 @@ public class TextChatBox extends JPanel {
 
     public TextChatBox(int width, int height){
         setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(width,height));
+
+        chatArea = new JTextArea();
 
     }
 }
