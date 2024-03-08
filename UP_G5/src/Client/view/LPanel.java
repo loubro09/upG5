@@ -100,7 +100,6 @@ public class LPanel extends JPanel {
     }
 
 
-
     public void populateList(String[] informationArray){
         leftPanelList.setListData(informationArray);
     }

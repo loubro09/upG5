@@ -20,7 +20,7 @@ public class ClientViewController {
         switch (button) {
             case Log_In:
                 //skapa instans av LogController
-                new LogInFrame(this);
+                new LogInFrame();
                 break;
             case Log_Out:
                 break;
