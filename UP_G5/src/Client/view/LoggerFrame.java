@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//Behöver vi denna klasseni gui? hur vill vi visa logglistan. Är activity cpntroller och loggController samma?
+//Behöver vi denna klasseni gui? hur vill vi visa logglistan. Är activity controller och loggController samma?
     public class LoggerFrame extends JFrame implements ActionListener {
         private ClientViewController controller;
         private JFrame frame;
