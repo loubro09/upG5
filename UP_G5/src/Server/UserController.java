@@ -2,6 +2,7 @@ package Server;
 
 import Entity.Buffer;
 import Entity.Message;
+import Entity.User;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -17,6 +18,12 @@ public class UserController implements PropertyChangeListener {
     }
     public Buffer<Message> getLoginBuffer() {
         return loginBuffer;
+    }
+
+    public boolean checkMessage(Message msg) {
+        User sender = msg.getSender();
+
+        return false;
     }
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
