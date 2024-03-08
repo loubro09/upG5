@@ -20,11 +20,11 @@ public class ServerNetworkBoundary {
 
     private ServerSocket serverSocket;
     private PropertyChangeSupport propertyChangeSupport;
-    private HashMap<User, ClientHandler> clients = new HashMap<>();
-    private Buffer<Message> messageBuffer = new Buffer<>();
-    private Buffer<Message> loginBuffer = new Buffer<>();
-    private Buffer<Message> logoutBuffer = new Buffer<>();
-    private Buffer<Message> registerUserBuffer = new Buffer<>();
+    private static HashMap<User, ClientHandler> clients = new HashMap<>();
+    private static Buffer<Message> messageBuffer = new Buffer<>();
+    private static Buffer<Message> loginBuffer = new Buffer<>();
+    private static Buffer<Message> logoutBuffer = new Buffer<>();
+    private static Buffer<Message> registerUserBuffer = new Buffer<>();
 
 
     public ServerNetworkBoundary(int port) {
@@ -83,7 +83,7 @@ public class ServerNetworkBoundary {
     }
 
 
-    private class ClientHandler extends Thread {
+    static class ClientHandler extends Thread {
         private ObjectOutputStream oos;
         private ObjectInputStream ois;
         private Socket socket;
