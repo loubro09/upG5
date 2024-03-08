@@ -42,18 +42,8 @@ public class LogController implements PropertyChangeListener{
             }
         }
         if (accountExist == false) {
-            //createAccount(userName, userIcon);
-            addUser(userName, userIcon);
+            //skicka error meddelande till gui
         }
-    }
-
-    public void createAccount(String userName, Icon userIcon) {
-        //Icon userImage = JFileChooser
-        //skapa nytt konto
-        //addUser(userName, userImage);
-        //skicka nytt konto till server
-        //User user = new User(userName, userIcon);
-        //addUser(userName, userIcon);
     }
 
     public void logOut(){
@@ -61,8 +51,21 @@ public class LogController implements PropertyChangeListener{
     }
 
     public void addUser(String userName, Icon icon){
-        User user = new User(userName,icon);
-        allUsers.add(user);
+        boolean accountExist = false;
+        for(User user: allUsers) {
+            if(user.getUserName().equals(userName)) {
+                //error meddelande til gui
+                accountExist = true;
+            }
+        }
+
+        if (accountExist == false) {
+            User user = new User(userName, icon);
+            allUsers.add(user);
+            ClientNetworkBoundary cnb = new ClientNetworkBoundary("localhost", 1234);
+            Message message = new Message(MessageType.registerUser, null, user, null, LocalDateTime.now(), null);
+            cnb.sendMessage(message);
+        }
     }
 
 

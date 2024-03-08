@@ -45,7 +45,8 @@ public class LPanel extends JPanel {
         btnRegUser.setSize(width / 5, 30);
         btnRegUser.setLocation((width / 5), height - 75);
         btnRegUser.addActionListener(e -> {
-            RegisterUserFrame registerUserFrame = new RegisterUserFrame();
+            //RegisterUserFrame registerUserFrame = new RegisterUserFrame();
+            btnRegUser.addActionListener(l -> mainFrame.buttonPressed(ButtonType.Register_new_user));
         });
         this.add(btnRegUser);
 

@@ -3,6 +3,7 @@ package Client;
 import Client.view.ButtonType;
 import Client.view.LogInFrame;
 import Client.view.MainFrame;
+import Client.view.RegisterUserFrame;
 
 public class ClientViewController {
     private MainFrame mainFrame;
@@ -27,6 +28,7 @@ public class ClientViewController {
             case Log_Out:
                 break;
             case Register_new_user:
+                new RegisterUserFrame(this);
                 break;
             case exit:
                 break;

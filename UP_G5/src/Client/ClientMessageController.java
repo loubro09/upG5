@@ -2,6 +2,7 @@ package Client;
 
 import Client.view.MainFrame;
 import Entity.Message;
+import Entity.MessageType;
 import Entity.User;
 
 import java.util.ArrayList;
@@ -24,10 +25,10 @@ public class ClientMessageController {
         });
     }
 
-    public void sendMessage(String text) {
-        Message message = new Message(text, null, null, null, null); // Skapa meddelandeobjekt med den aktuella texten
+    /*public void sendMessage(String text) {
+        Message message = new Message(MessageType.message, null, null, null, null); // Skapa meddelandeobjekt med den aktuella texten
         networkBoundary.sendMessage(message);
-    }
+    }*/
 
     private void receiveMessage(Message message) {
         String senderName = message.getSender() != null ? message.getSender().getUserName() : "Unknown";

@@ -27,9 +27,9 @@ public class MainFrame extends JFrame {
 
     }
 
-    public void populateLeftPanel(ArrayList<Message> messages) {
+    /*public void populateLeftPanel(ArrayList<Message> messages) {
         mainPanel.getLeftPanel().populateList(messages);
-    }
+    }*/
 
     public void showMessage(String message) {
         JOptionPane.showMessageDialog(this, message);

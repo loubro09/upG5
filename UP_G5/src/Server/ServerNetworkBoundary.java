@@ -26,7 +26,6 @@ public class ServerNetworkBoundary {
     private HashMap<User, ClientHandler> clients = new HashMap<>();
     private Buffer<Message> messageBuffer = new Buffer<>();
     private Buffer<Message> logoutBuffer = new Buffer<>();
-    private Buffer<Message> registerUserBuffer = new Buffer<>();
 
 
     public ServerNetworkBoundary(int port) {
@@ -73,7 +72,6 @@ public class ServerNetworkBoundary {
         }
     }
 
-
     private class Connection extends Thread {
 
         @Override
@@ -91,7 +89,7 @@ public class ServerNetworkBoundary {
     }
 
 
-    private class ClientHandler extends Thread {
+    public class ClientHandler extends Thread {
         private ObjectOutputStream oos;
         private ObjectInputStream ois;
         private Socket socket;
@@ -121,10 +119,10 @@ public class ServerNetworkBoundary {
                             logoutBuffer.put(message);
                             break;
                         case registerUser:
-                            registerUserBuffer.put(message);
+                            propertyChangeSupport.firePropertyChange("sendClient", null, this);
+                            propertyChangeSupport.firePropertyChange("register",null,message);
                             break;
                     }
-
                 }
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();

@@ -17,10 +17,11 @@ public class RegisterUserFrame extends JFrame implements ActionListener {
     private JButton enterPhoto;
     private File file;
     private JLabel picture;
+    private ClientViewController controller;
 
 
-    public RegisterUserFrame() {
-
+    public RegisterUserFrame(ClientViewController controller) {
+        this.controller = controller;
         setTitle("Register New User");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -81,6 +82,7 @@ public class RegisterUserFrame extends JFrame implements ActionListener {
                 }
             }
         }else if(e.getActionCommand().equals("Register")){
+            controller.getLc().addUser(enterUserName.getText(), enterPhoto.getIcon());
             dispose();
         }
     }
