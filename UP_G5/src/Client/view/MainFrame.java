@@ -29,9 +29,7 @@ public class MainFrame extends JFrame {
 
     /*public void populateLeftPanel(ArrayList<Message> messages) {
         mainPanel.getLeftPanel().populateList(messages);
-    }
-
-     */
+    }*/
 
     public void showMessage(String message) {
         JOptionPane.showMessageDialog(this, message);
@@ -61,6 +59,11 @@ public class MainFrame extends JFrame {
 
     public void disableFriendsButton() {
         mainPanel.getRightPanel().getBtnFriends().setEnabled(false);
+    }
+
+    public void disableAndHideAddFriendButton() {
+        mainPanel.getRightPanel().getBtnSelectContact().setEnabled(false);
+        mainPanel.getRightPanel().getBtnSelectContact().setVisible(false);
     }
 
 

@@ -14,7 +14,8 @@ public class Message implements Serializable {
     private LocalDateTime timeDelivered;
     private LocalDateTime timeReceived;
 
-    public Message(String text, User sender, List<User> receivers, LocalDateTime timeDelivered, LocalDateTime timeReceived) {
+    public Message(MessageType messageType, String text, User sender, List<User> receivers, LocalDateTime timeDelivered, LocalDateTime timeReceived) {
+        this.messageType = messageType;
         this.text = text;
         this.sender = sender;
         this.receivers = receivers;

@@ -52,10 +52,10 @@ public class RPanel extends JPanel {
         btnAllUsers.addActionListener(l -> mainFrame.buttonPressed(ButtonType.allUsers));
         this.add(btnAllUsers);
 
-        btnSelectContact = new JButton("Select Contact");
+        btnSelectContact = new JButton("Add friend");
         btnSelectContact.setEnabled(true);
         btnSelectContact.setSize(width / 5, 30);
-        btnSelectContact.setLocation((width/5)*4, height - 75);
+        btnSelectContact.setLocation((width/2), height - 75);
         btnSelectContact.addActionListener(l -> mainFrame.buttonPressed(ButtonType.Choose_Contact));
         this.add(btnSelectContact);
     }
@@ -87,6 +87,8 @@ public class RPanel extends JPanel {
         defaultString[0] = "Nothing selected";
         populateList(defaultString);
     }
+
+
 
     protected void setTextTitleLabel(String labelText){
         lblTitle.setText(labelText);
