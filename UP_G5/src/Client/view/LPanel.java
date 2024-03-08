@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class LPanel extends JPanel {
     private JLabel userNameLabel;
-    private JTextField textInputField;
     private JList<Message> leftPanelList;
     private JTextArea textChatBox;
     private JButton btnlogIn;
@@ -51,26 +50,9 @@ public class LPanel extends JPanel {
         userNameLabel.setSize(width, 20);
         userNameLabel.setLocation(0, 15);
         this.add(userNameLabel);
-
-        textInputField = new JTextField();
-        textInputField.setSize(width, 30);
-        textInputField.setLocation(0, height - 40);
-        this.add(textInputField);
     }
 
     private void setUp() {
-
-        textInputField = new JTextField();
-        textInputField.setSize(width, 30);
-        textInputField.setLocation(0, height - 40);
-        textInputField.addActionListener(e -> {
-            String text = textInputField.getText().trim();
-            if (!text.isEmpty()) {
-                mainFrame.showMessage(text);
-                textInputField.setText("");
-            }
-        });
-        this.add(textInputField);
 
         btnlogIn = new JButton("Log In");
         btnlogIn.setEnabled(true);
@@ -102,13 +84,6 @@ public class LPanel extends JPanel {
         btnLogOut.addActionListener(l -> mainFrame.buttonPressed(ButtonType.Log_Out));
         btnLogOut.setLocation((width / 5) * 3, height - 75);
         this.add(btnLogOut);
-
-        btnExit = new JButton("Exit Program");
-        btnExit.setEnabled(true);
-        btnExit.setSize(width / 5, 30);
-        btnExit.addActionListener(l -> mainFrame.buttonPressed(ButtonType.exit));
-        btnExit.setLocation((width / 5) * 4, height - 75);
-        this.add(btnExit);
 
 
     }
@@ -144,8 +119,8 @@ public class LPanel extends JPanel {
     public void populateList(ArrayList<Message> messages) {
         DefaultListModel<Message> listModel = new DefaultListModel<>();
         for (Message message : messages) {
-            if (message.getSender() != null) {
-                userNameLabel.setText(message.getSender().getUserName());
+            if(message.getSender() != null){
+
             }
             listModel.addElement(message);
         }
