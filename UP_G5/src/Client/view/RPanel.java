@@ -112,3 +112,4 @@ public class RPanel extends JPanel {
 
     protected JButton getBtnViewSelectedOrder() {return btnViewSelectedOrder;}
 }
+

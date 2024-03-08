@@ -3,7 +3,6 @@ package Entity;
 import javax.swing.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public class Message implements Serializable {
@@ -15,8 +14,7 @@ public class Message implements Serializable {
     private LocalDateTime timeDelivered;
     private LocalDateTime timeReceived;
 
-    public Message(MessageType messageType, String text, User sender, List<User> receivers, LocalDateTime timeDelivered, LocalDateTime timeReceived) {
-        this.messageType = messageType;
+    public Message(String text, User sender, List<User> receivers, LocalDateTime timeDelivered, LocalDateTime timeReceived) {
         this.text = text;
         this.sender = sender;
         this.receivers = receivers;
@@ -44,5 +42,13 @@ public class Message implements Serializable {
     }
     public LocalDateTime getTimeDelivered(){
         return timeDelivered;
+    }
+
+    public MessageType getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(MessageType messageType) {
+        this.messageType = messageType;
     }
 }

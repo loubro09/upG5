@@ -6,20 +6,13 @@ import Client.view.MainFrame;
 
 public class ClientViewController {
     private MainFrame mainFrame;
-    private ClientMessageController cmc;
-    private LogController lc;
-    private ContactController cc;
 
-    public ClientViewController(ClientMessageController cmc, LogController lc, ContactController cc) {
-        this.cmc = cmc;
-        this.lc = lc;
-        this.cc = cc;
+    public ClientViewController() {
         mainFrame = new MainFrame(1000, 500, this);
         mainFrame.enableAllButtons();
         mainFrame.disableLogOutButton();
         mainFrame.disableFriendsButton();
         mainFrame.disableSendMessageButton();
-        mainFrame.disableAndHideAddFriendButton();
         //ta emot instanser av controllers?
     }
 
@@ -46,14 +39,9 @@ public class ClientViewController {
         }
     }
 
-    public LogController getLc() {
-        return lc;
-    }
-
     public static void main (String[] args) {
-        ClientMessageController cmc = new ClientMessageController();
-        LogController lc = new LogController();
-        ContactController cc = new ContactController();
-        ClientViewController controller = new ClientViewController(cmc, lc, cc);
+        ClientViewController controller = new ClientViewController();
+       // ClientMessageController msgController = new ClientMessageController();
+
     }
 }
