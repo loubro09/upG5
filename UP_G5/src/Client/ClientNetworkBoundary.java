@@ -1,5 +1,8 @@
 package Client;
 
+import Entity.Message;
+import Server.ServerNetworkBoundary;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
@@ -26,11 +29,15 @@ public class ClientNetworkBoundary {
 
     }
 
-    synchronized public void sendMessage(){
-
+    synchronized public void sendMessage(Message message){
+    try{
+        oos.writeObject(message);
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
     }
 
-    synchronized public void receiveMessage(){
+    synchronized public void receiveMessage(Message message){
 
     }
 
@@ -41,10 +48,25 @@ public class ClientNetworkBoundary {
 
     private class Listener implements Runnable{
 
+        private String serverAdress;
+        private int port;
+
         @Override
         public void run() {
+            try {
+                Socket socket = new Socket(serverAdress, port);
+                ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+                while (true) {
+                    Message message = (Message) ois.readObject();
+                    propertyChangeSupport.firePropertyChange("Message received", null, message);
+                }
+            } catch (IOException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
 
         }
+
     }
+
 
 }

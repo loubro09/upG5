@@ -1,6 +1,7 @@
 package Client.view;
 
 import Client.ClientViewController;
+import Entity.User;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -20,6 +21,7 @@ public class LogInFrame  extends JFrame implements ActionListener{
         private JButton enterPhoto;
         private File file;
         private JLabel picture;
+        private User user;
 
 
         public LogInFrame(ClientViewController controller) {
@@ -39,6 +41,7 @@ public class LogInFrame  extends JFrame implements ActionListener{
             lblUserName.setVisible(true);
             add(lblUserName);
 
+
             enterUserName = new JTextField();
             enterUserName.setVisible(true);
             add(enterUserName);
@@ -49,6 +52,7 @@ public class LogInFrame  extends JFrame implements ActionListener{
             enterPhoto.addActionListener(this);
             add(enterPhoto);
 
+
             JLabel lblIP = new JLabel("Enter IP address: ");
             lblIP.setVisible(true);
             add(lblIP);
@@ -56,6 +60,7 @@ public class LogInFrame  extends JFrame implements ActionListener{
             enterIP = new JTextField();
             enterIP.setVisible(true);
             add(enterIP);
+
 
             picture = new JLabel();
             picture.setVisible(true);
