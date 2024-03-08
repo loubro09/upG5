@@ -43,8 +43,10 @@ public class LPanel extends JPanel {
         btnRegUser = new JButton("Register user");
         btnRegUser.setEnabled(true);
         btnRegUser.setSize(width / 5, 30);
-        btnRegUser.setLocation(width / 5, height - 75);
-        btnRegUser.addActionListener(l -> mainFrame.buttonPressed(ButtonType.Register_new_user));
+        btnRegUser.setLocation((width / 5), height - 75);
+        btnRegUser.addActionListener(e -> {
+            RegisterUserFrame registerUserFrame = new RegisterUserFrame();
+        });
         this.add(btnRegUser);
 
         btnSend = new JButton("Send Message");
@@ -65,7 +67,7 @@ public class LPanel extends JPanel {
         btnExit.setEnabled(true);
         btnExit.setSize(width / 5, 30);
         btnExit.addActionListener(l -> mainFrame.buttonPressed(ButtonType.exit));
-        btnExit.setLocation((width / 5)*5, height - 75);
+        btnExit.setLocation((width / 5)*4, height - 75);
         this.add(btnExit);
 
 

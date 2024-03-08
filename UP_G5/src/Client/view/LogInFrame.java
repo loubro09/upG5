@@ -33,10 +33,6 @@ public class LogInFrame  extends JFrame implements ActionListener{
             this.controller = controller;
         }
 
-        /**
-         * Method that creates all GUI-components of the Custom Pizza Frame.
-         * @author Louis Brown
-         */
         public void setupPanel() {
             //a label that instructs the user to choose toppings from the dropdown list
             JLabel lblUserName = new JLabel("Enter username: ");
