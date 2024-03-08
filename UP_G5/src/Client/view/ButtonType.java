@@ -6,7 +6,6 @@ public enum ButtonType {
     Log_Out,
     Choose_Contact,
     send,
-    exit,
     friends,
     allUsers,
 

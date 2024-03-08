@@ -27,12 +27,19 @@ public class MainFrame extends JFrame {
 
     }
 
+<<<<<<< HEAD
     public void populateLeftPanel(Message message) {
 
         ArrayList<Message> listModel = new ArrayList<>();
         listModel.add(message);
         mainPanel.getLeftPanel().populateList(listModel);
+=======
+    /*public void populateLeftPanel(ArrayList<Message> messages) {
+        mainPanel.getLeftPanel().populateList(messages);
+>>>>>>> 0e6c20993fe1d64ac92ffde085d497669d447436
     }
+
+     */
 
     public void showMessage(String message) {
         JOptionPane.showMessageDialog(this, message);

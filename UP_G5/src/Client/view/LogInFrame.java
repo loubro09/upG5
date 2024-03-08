@@ -13,71 +13,58 @@ import java.io.IOException;
 
 public class LogInFrame  extends JFrame implements ActionListener{
         private JPanel mainPanel;
-        private ClientViewController controller;
-        private JButton login;
+
         private JTextField enterUserName;
-        private JTextField enterIP;
-        private JTextField enterPort;
         private JButton enterPhoto;
         private File file;
         private JLabel picture;
-        private User user;
 
-
-        public LogInFrame(ClientViewController controller) {
-            mainPanel = new JPanel(new GridLayout(3, 1));
-            setSize(600, 400);
-            this.setContentPane(mainPanel);
+        public LogInFrame() {
+            setTitle("Log in");
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            setLocationRelativeTo(null);
+            setResizable(true);
             setupPanel();
-            this.setTitle("Log in");
-            this.setVisible(true);
-            this.setResizable(false);
-            this.controller = controller;
+            pack();
+            setMinimumSize(new Dimension(300,300));
+            setVisible(true);
         }
 
         public void setupPanel() {
-            //a label that instructs the user to choose toppings from the dropdown list
-            JLabel lblUserName = new JLabel("Enter username: ");
-            lblUserName.setVisible(true);
-            add(lblUserName);
+            mainPanel = new JPanel();
+            mainPanel.setLayout(new BorderLayout());
+            JPanel inputPanel2 = new JPanel();
+            inputPanel2.setLayout(new BoxLayout(inputPanel2, BoxLayout.Y_AXIS));
 
+            JLabel lblUserName = new JLabel("Enter username: ");
+            inputPanel2.add(lblUserName);
 
             enterUserName = new JTextField();
             enterUserName.setVisible(true);
-            add(enterUserName);
+            enterUserName.setAlignmentX(Component.LEFT_ALIGNMENT);
+            enterUserName.setPreferredSize(new Dimension(100,25));
+            inputPanel2.add(enterUserName);
+            mainPanel.add(inputPanel2, BorderLayout.NORTH);
+            //add(enterUserName);
 
+            JPanel buttonPanel = new JPanel();
+            buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
             enterPhoto = new JButton("Choose Photo");
-            enterPhoto.setVisible(true);
-            enterPhoto.setEnabled(true);
+            enterPhoto.setAlignmentX(Component.LEFT_ALIGNMENT);
             enterPhoto.addActionListener(this);
-            add(enterPhoto);
-
-
-            JLabel lblIP = new JLabel("Enter IP address: ");
-            lblIP.setVisible(true);
-            add(lblIP);
-
-            enterIP = new JTextField();
-            enterIP.setVisible(true);
-            add(enterIP);
-
+            buttonPanel.add(enterPhoto);
 
             picture = new JLabel();
-            picture.setVisible(true);
-            add(picture);
+            picture.setAlignmentX(Component.LEFT_ALIGNMENT);
+            buttonPanel.add(picture);
 
-            JLabel lblPort = new JLabel("Enter port: ");
-            lblPort.setVisible(true);
-            add(lblPort);
+            JButton login= new JButton("Log in");
+            login.setAlignmentX(Component.LEFT_ALIGNMENT);
+            login.addActionListener(this);
+            buttonPanel.add(login);
 
-            enterPort = new JTextField();
-            enterPort.setVisible(true);
-            add(enterPort);
-
-            login = new JButton("Log in");
-            login.setVisible(true);
-            login.setEnabled(true);
-            add(login);
+            mainPanel.add(buttonPanel, BorderLayout.CENTER);
+            getContentPane().add(mainPanel);
         }
 
         @Override
@@ -97,6 +84,8 @@ public class LogInFrame  extends JFrame implements ActionListener{
                         throw new RuntimeException(ex);
                     }
                 }
+            }else if(e.getActionCommand().equals("Log in")) {
+                dispose();
             }
-    }
+        }
 }
