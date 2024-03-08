@@ -14,6 +14,8 @@ public class ClientViewController {
         mainFrame.disableFriendsButton();
         mainFrame.disableSendMessageButton();
         //ta emot instanser av controllers?
+
+        ClientMessageController msgController = new ClientMessageController("127.0.0.1", 2343, mainFrame);
     }
 
     public void buttonPressed(ButtonType button) {
@@ -41,7 +43,6 @@ public class ClientViewController {
 
     public static void main (String[] args) {
         ClientViewController controller = new ClientViewController();
-       // ClientMessageController msgController = new ClientMessageController();
 
     }
 }

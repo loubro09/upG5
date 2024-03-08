@@ -23,12 +23,15 @@ public class MainFrame extends JFrame {
         this.setContentPane(mainPanel);
         this.setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        messageController = new ClientMessageController("server_ip", 1234, this);
+        messageController = new ClientMessageController("127.0.0.1", 2343, this);
 
     }
 
-    public void populateLeftPanel(ArrayList<Message> messages) {
-        mainPanel.getLeftPanel().populateList(messages);
+    public void populateLeftPanel(Message message) {
+
+        ArrayList<Message> listModel = new ArrayList<>();
+        listModel.add(message);
+        mainPanel.getLeftPanel().populateList(listModel);
     }
 
     public void showMessage(String message) {
