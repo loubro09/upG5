@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class LoggerController {
 
-    public static void LogFile(Message message)  {
+    public static void LogFile(Message message) {
         try (FileWriter fileWriter = new FileWriter("logger.txt", true);
 
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
@@ -27,8 +27,8 @@ public class LoggerController {
         int i = 0;
 
         try {
-            File leaderboard = new File("logger.txt");
-            Scanner myReader = new Scanner(leaderboard);
+            File logger = new File("logger.txt");
+            Scanner myReader = new Scanner(logger);
 
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
@@ -47,7 +47,7 @@ public class LoggerController {
                     .filter(line -> line != null && !line.trim().isEmpty())
                     .toArray(String[]::new);
 
-            
+
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred. ");
             e.printStackTrace();

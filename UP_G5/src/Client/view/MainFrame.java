@@ -1,11 +1,17 @@
 package Client.view;
+
+import Client.ClientMessageController;
 import Client.ClientViewController;
 import Client.view.*;
+import Entity.Message;
+
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
     private MainPanel mainPanel;
     private ClientViewController controller;
+    private ClientMessageController messageController;
 
 
     public MainFrame(int width, int height, ClientViewController controller) {
@@ -17,24 +23,30 @@ public class MainFrame extends JFrame {
         this.setContentPane(mainPanel);
         this.setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        messageController = new ClientMessageController("server_ip", 1234, this);
 
     }
 
-    public void populateLeftPanel(String[] informationArray){
-        mainPanel.getLeftPanel().populateList(informationArray);
+    public void populateLeftPanel(ArrayList<Message> messages) {
+        mainPanel.getLeftPanel().populateList(messages);
+    }
+
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
     }
 
 
-    public void populateRightPanel(String[] informationArray){
+
+    public void populateRightPanel(String[] informationArray) {
         mainPanel.getRightPanel().populateList(informationArray);
     }
 
-    public void clearRightPanel(){
+    public void clearRightPanel() {
         mainPanel.getRightPanel().clearList();
     }
 
 
-    public int getSelectionLeftPanel(){
+    public int getSelectionLeftPanel() {
         return mainPanel.getLeftPanel().getLeftPanelList().getSelectedIndex();
     }
 
@@ -60,7 +72,7 @@ public class MainFrame extends JFrame {
         mainPanel.getRightPanel().setTextTitleLabel(newText);
     }*/
 
-    public void enableAllButtons(){
+    public void enableAllButtons() {
         mainPanel.getLeftPanel().getBtnExit().setEnabled(true);
         mainPanel.getLeftPanel().getBtnlogIn().setEnabled(true);
         mainPanel.getLeftPanel().getBtnLogOut().setEnabled(true);
@@ -69,7 +81,7 @@ public class MainFrame extends JFrame {
     }
 
 
-    public void buttonPressed(ButtonType pressedButton){
+    public void buttonPressed(ButtonType pressedButton) {
         controller.buttonPressed(pressedButton);
     }
 
