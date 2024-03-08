@@ -26,12 +26,13 @@ public class LogController implements PropertyChangeListener{
         //kalla logIn metoden med användarnamnet i parameter
     }
 
-    public void logIn(String userName, String ip, String port, Icon userIcon){
+    //public void logIn(String userName, String ip, String port, Icon userIcon){
+    public void logIn(String userName, Icon userIcon) {
         boolean accountExist = false;
         for (User us : allUsers) {
             if(us.getUserName().equals(userName)) {
                 User user = us;
-                ClientNetworkBoundary cnb = new ClientNetworkBoundary(ip, Integer.parseInt(port));
+                ClientNetworkBoundary cnb = new ClientNetworkBoundary("localhost", 1234);
                 Message message = new Message(MessageType.logIn, null, user, null, LocalDateTime.now(), null);
                 cnb.sendMessage(message);
                 //ändra till inloggad

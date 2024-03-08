@@ -103,7 +103,8 @@ public class LogInFrame  extends JFrame implements ActionListener{
                 }
             }
             else if (e.getSource() == login) {
-                controller.getLc().logIn(enterUserName.getText(), enterIP.getText(), enterPort.getText(), picture.getIcon());
+                //controller.getLc().logIn(enterUserName.getText(), enterIP.getText(), enterPort.getText(), picture.getIcon());
+                controller.getLc().logIn(enterUserName.getText(), picture.getIcon());
             }
     }
 }
