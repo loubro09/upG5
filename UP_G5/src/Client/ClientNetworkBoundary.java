@@ -41,6 +41,9 @@ public class ClientNetworkBoundary {
 
     }
 
+    public void addPropertyChangeListener(PropertyChangeListener propertyChangeListener){
+        propertyChangeSupport.addPropertyChangeListener(propertyChangeListener);
+    }
 
 
     private class Listener implements Runnable{
@@ -63,9 +66,7 @@ public class ClientNetworkBoundary {
 
         }
 
-        public void addPropertyChangeListener(PropertyChangeListener propertyChangeListener){
-            propertyChangeSupport.addPropertyChangeListener(propertyChangeListener);
-        }
     }
+
 
 }
