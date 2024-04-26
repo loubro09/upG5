@@ -85,7 +85,6 @@ public class LPanel extends JPanel {
         btnLogOut.setLocation((width / 5) * 3, height - 75);
         this.add(btnLogOut);
 
-
     }
 
     protected JList<Message> getLeftPanelList() {
